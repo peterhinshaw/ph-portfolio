@@ -1,0 +1,20 @@
+<h1>Add new item</h1>
+<% form_tag ({:action => 'create'}, 
+                        :multipart => true) do -%>
+
+<h4>Params</h4> <%= debug(params) %>
+<h4>Request</h4> <%= debug(request) %>
+
+<p><label for="item_title">Title</label>:
+<%= text_field 'item', 'title' %></p>
+<p><label for="item_price">Price</label>:
+<%= text_field 'item', 'price' %></p>
+<p><label for="item_category">Category</label>:
+<%= collection_select(:item,:category_id,@categories,:id,:name) %></p>
+<p><label for="upload_file">Select File</label> : 
+<%= file_field 'upload', 'datafile' %></p>
+<p><label for="item_description">Description</label><br/>
+<%= text_area 'item', 'description' %></p>
+<%= submit_tag "Create" %>
+<% end -%> 
+<%= link_to 'Back', {:action => 'list'} %>

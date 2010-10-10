@@ -1,0 +1,284 @@
+<html>
+	<head>
+		<title>Ty's Vintage Sales</title>
+		<%= stylesheet_link_tag "sitestyle", :media => "all"%> 
+		<%= javascript_include_tag "mootools.js" %>
+		<%= javascript_include_tag "Stickman.MultiUpload.js" %>
+		<script type="text/javascript">
+			window.addEvent('domready', function(){
+			// Max 3 files, use '[{id}]' as element name suffix, remove path from file name, remove extra elemen
+			new MultiUpload( $( 'create_form' ).upload, 3, '[{id}]', true, true );
+		});
+        </script> 
+	</head>
+
+	<body LANG="en-US" DIR="LTR" bgcolor="#fafafa" >
+                <div id="header1">
+                   Ty's Vintage Sales
+		</div>
+
+		<div id="nav"><ul>
+		    <li><a href="http://127.0.0.1:3002/store/index">Home</a></li>
+		    <li><a href="http://127.0.0.1:3002/store/view_cart">View Cart</a></li>
+		    <li><a href="http://127.0.0.1:3002/store/empty_cart">Empty Cart</a></li>
+		    <li><a href="http://127.0.0.1:3002/news/about">News</a></li>
+		    <li><a href="http://127.0.0.1:3002/contact/about">Contact</a></li>
+		    		    
+	
+<% if logged_in? -%>
+<li><samp>User:</samp></li><li><%= link_to_current_user :content_method => :login %></li>
+<li><%= link_to "Log out", logout_path, { :title => "Log out" }    %></li>
+<% else -%>
+<!--  <li><%= link_to_login_with_IP 'Not logged in' %></li>  -->
+<li><%= link_to "Log in",  login_path,  { :title => "Log in" } %> </li>
+<li><%= link_to "Sign up", signup_path, { :title => "Create an account" } %></li>
+<% end -%>
+		</ul></div>
+		<div id="columns">
+			<div id="div1">
+			<div id="blueblock">
+				<ul>
+				
+				<% Category.find(:all).each do |c| %>
+				<li><%= link_to c.name, :action => "show_categories", 
+				:id => c.id %></li> 
+				<% end %>
+				</ul>   
+
+			</div>
+			</div>
+			<div id="div2" >
+				<%= @content_for_layout %>
+			</div>
+		</div>
+	</body>
+
+<style type="text/css">
+
+#columns { background: url(../images/content_bg.gif) repeat-y 50% 0%; } 
+#div1 { float:left; width:20%;}
+#div2 { margin-left:20%; width:80%;}
+
+
+#header1{ 
+padding-left: 200px;
+padding-bottom: 6px;
+padding-top: 2px;
+border-top-style: ridge;
+border-bottom-style: ridge;
+font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+color:  #642f2f;
+background-color:  #e0e0e0;
+font-size:  20px;
+border-left: 2px solid #e0e0e0;
+word-spacing: 10pt;
+letter-spacing: 4pt;
+}
+
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+
+#blueblock{
+width: 180px;
+border-right: 1px solid #e0e0e0;
+border-left: 1px solid #e0e0e0;
+padding: 0 0 1em 0;
+margin-bottom: 1em;
+font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+font-size: 90%;
+background-color: #e0e0e0;
+color: #642f2f;
+}
+
+
+* html #blueblock{ /*IE 6 only */
+w\idth: 147px; /*Box model bug: 180px minus all left and right paddings for #blueblock */
+}
+
+#blueblock ul{
+list-style: none;
+margin: 0;
+padding: 0;
+border: none;
+}
+
+#blueblock li {
+border-bottom: 1px solid #e8e8e8;
+margin: 0;
+}
+
+#blueblock li a{
+display: block;
+padding: 5px 5px 5px 8px;
+border-left: 4px solid #d0d0d0;
+border-right: 4px solid #e8e8e8;
+background-color: #e0e0e0;
+color: #642f2f;
+text-decoration: none;
+width: 100%;
+}
+
+html>body #blueblock li a{ /*Non IE6 width*/
+width: auto;
+}
+
+#blueblock li a:hover{
+border-left: 4px solid #5f3636;
+border-right: 4px solid #d45c5c;
+background-color: #8d4b4b;
+color: #fff;
+}
+
+div.multiupload{
+	border:1px outset gray;
+	float:left;
+	padding:3px;
+	background:#eee;
+}
+div.multiupload div.list{
+	border:1px inset gray;
+	background: #fff;
+}
+div.multiupload div.list div.item{
+	margin:1px;
+	background: #eee;
+}
+div.multiupload div.list div.item:hover{
+	background: #ccc;
+}
+div.multiupload div.list img{
+	float:left;
+	margin: 3px;
+	cursor:pointer;
+}
+
+.item-price, .total-line {
+  text-align: right;
+}
+
+#stdtext {
+  font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+  font-size: small;
+  color: #642f2f;
+}
+
+#stdtext ul {
+list-style-type: none;
+margin: 100;
+padding-right: 2px;
+border: none;
+}
+
+#stdtext ul li {
+margin: 0;
+padding-right: 2px; 
+}
+
+
+#item   .title {
+  font-size: 120%;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+  color: #642f2f;
+}
+
+#entry  img {
+  float: left;
+}
+
+/* An entry in the item catalog */
+/* #item  .entry { */
+#entry {
+  border-bottom: 1px dotted #777;
+  font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+  font-size: small;
+  color: #642f2f;
+}
+
+#entry  .h3 {
+ margin-bottom: 2px;
+ color: #642f2f;
+}
+
+#entry  .p {
+ margin-top: 0px;
+ margin-bottom: 0.8em;
+ color: #642f2f;
+ font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+}
+
+#entry .price-line {
+}
+
+#entry  .add-to-cart {
+  position: relative;
+}
+
+#entry  .price {
+  color: #642f2f;
+  font-weight: bold;
+  margin-right: 2em;
+}
+
+
+/*---------------------------------  Navigation.css  ---*/ 
+
+#nav {
+height: 22px;
+border-bottom-style: ridge;
+border-color: black;
+font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+font-size: 95%;
+background-color: #e0e0e0;
+color: #642f2f; 
+}
+
+#nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+border: none;
+}
+
+#nav ul li {
+width: 100px;
+display: block;
+float: left;	
+}
+
+
+#nav ul li samp {
+font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+padding: 1px 2px 1px 54px;
+font-size: 90%;
+background-color:  #e0e0e0;
+color: #642f2f;
+}
+
+#nav ul li a {
+font-family: 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+padding: 2px 4px 2px 4px;
+float: left;	
+font-size: 90%;
+display: block;
+border-left: 2px solid #e0e0e0;
+border-top: 1px solid #e0e0e0;
+border-right: 1px solid #e0e0e0;
+background-color: #e8e8e8;
+color: #642f2f;
+text-decoration: none;
+width: 100%;
+}
+
+#nav ul li a:hover {
+  border-left: 2px solid #5f3636;
+  background-color: #8d4b4b;
+  color: #fff;}
+
+#nav ul li.selected a {
+  color: #FFFFFF;
+  background: #0b0b0a;
+  border-bottom: 1px solid #0b0b0a; }
+
+
+</style>
+</html>

@@ -1,0 +1,19 @@
+
+<%= error_messages_for 'user' %>
+<fieldset>
+<legend>Please enter login credentials</legend>
+<%= form_tag  %>
+
+<p>
+<label for="user_name">Login Id:</label>
+<%= text_field("user", "name") %>
+</p>
+<p>
+<label for="user_password">Password:</label>
+<%= password_field("user", "password") %>
+</p>
+<%= submit_tag "Login", :class => "submit" %>
+</fieldset>
+<% if flash[:notice] -%>
+  <div id="notice"><%= flash[:notice] %> </div>
+<% end -%>

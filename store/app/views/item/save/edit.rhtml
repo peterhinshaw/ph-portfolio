@@ -1,0 +1,23 @@
+<div id="entry">
+<h1>Edit Item Detail</h1>
+<% form_tag :action => 'update', :id => @item  do -%>
+<p><label for="item_title">Title</label>:
+<%= text_field 'item', 'title' %></p>
+<% Item.find(params[:id]).images.each do |i|  %>
+<li><%= link_to i.img_tag_thumbnail, :action => "show_image", :id => i.id  %></li>
+<% end -%>
+
+<p><label for="item_price">Price</label>:
+<%= text_field 'item', 'price' %></p>
+<p><label for="item_quantity">Quantity</label>:
+<%= text_field 'item', 'quantity' %></p>
+<p><label for="item_shipping">Shipping</label>:
+<%= text_field 'item', 'shipping' %></p>
+<p><label for="item_category">Category</label>:
+<%= collection_select(:item, :category_id,
+                         @categories, :id, :name) %></p>
+<p><label for="item_description">Description</label><br/>
+<%= text_area 'item', 'description' %></p>
+<%= submit_tag "Save changes" %>
+<% end -%>
+</div>

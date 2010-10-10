@@ -1,0 +1,44 @@
+<br>
+<% if @cart.empty? %> 
+<div id="stdtext">
+   <p>There is nothing in your cart</p>
+</div>
+<% else %>
+  <p></p>
+  <div id="entry"> Total for Cart: <span class="price"><%= number_to_currency(@cart.total_price) %> </span> <p></p>
+  </div>
+
+  <table cellpadding="2" cellspacing="0">
+  <% for cartitem in @cart.cartitems -%>
+        <tr valign="top"><td></td><td>
+          <%= cartitem.images[0].img_tag_thumbnail %>
+      </td><td>
+         <div id="entry"> 
+            <%= h(cartitem.title) %>
+            <p>
+            <%= cartitem.description %>
+           </p> 
+           <div class="price-line">
+              Total Item Cost:
+                <span class="price"><%= number_to_currency(cartitem.price + cartitem.shipping) %></span>
+                Quantity:
+                <span class="price"><%= cartitem.quantity %></span>
+                Unit Cost:
+               <span class="price"><%= number_to_currency(cartitem.price / cartitem.quantity) %></span>
+               Shipping:
+              <span class="price"><%= number_to_currency(cartitem.shipping) %></span>
+      
+	      <% form_for :cartitem, cartitem, :url => { :action => "set_quantity", :id=> cartitem.title} do |f| %>
+                    New Quantity: <%= f.text_field :quantity %>
+	            <%= submit_tag 'Change Quantity in Cart' %>
+	      <% end %>
+
+              <% form_tag( :action => "remove_from_cart", :controller => "store", :id=> cartitem.title ) do %>
+                    <%= submit_tag "Remove Item from Cart" %>
+              <% end %>
+           </div>
+	</div>
+	</td></tr>
+  <% end %>
+  </div>
+<% end %>

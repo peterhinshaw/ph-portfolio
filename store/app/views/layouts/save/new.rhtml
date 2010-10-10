@@ -1,0 +1,33 @@
+	<script src="mootools.js"></script>
+	<script src="Stickman.MultiUpload.js"></script>
+	<script type="text/javascript">
+		window.addEvent('domready', function(){
+			// Use defaults: no limit, use default element name suffix, don't remove path from file name
+			new MultiUpload( $( 'main_form' ).defaults );
+			// Max 3 files, use '[{id}]' as element name suffix, remove path from file name, remove extra elemen
+			new MultiUpload( $( 'main_form' ).use_settings, 3, '[{id}]', true, true );
+		});
+	</script>
+
+div.multiupload{
+	border:1px outset gray;
+	float:left;
+	padding:3px;
+	background:#eee;
+}
+div.multiupload div.list{
+	border:1px inset gray;
+	background: #fff;
+}
+div.multiupload div.list div.item{
+	margin:1px;
+	background: #eee;
+}
+div.multiupload div.list div.item:hover{
+	background: #ccc;
+}
+div.multiupload div.list img{
+	float:left;
+	margin: 3px;
+	cursor:pointer;
+}

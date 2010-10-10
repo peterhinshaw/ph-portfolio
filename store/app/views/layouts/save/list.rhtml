@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Vintage Sales, brought to you by Leo and Friskas</title>
+		<%= stylesheet_link_tag "sitestyle", :media => "all" %>
+	</head>
+	<body LANG="en-US" BGCOLOR="#D1AC89" DIR="LTR">
+		<div id="banner">
+			<img src="/images/VintageSalesLogo.png"/>
+			<%= @page_title || "Vintage Sales" %>
+		</div>
+		<div id="columns">
+			<div id="side">
+				<a href="http://www....">Home</a><br />
+				<a href="http://www..../faq">Questions</a><br />
+				<a href="http://www..../news">News</a><br />
+				<a href="http://www..../contact">Contact</a><br />
+			</div>
+			<div id="main">
+				<%= @content_for_layout %>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<table cellpadding="2" cellspacing="0" 
+<% if @items.blank? %>
+<p>There are not any items currently in the system.</p>
+<% else %>
+<ul id="items" >
+<% @items.each do |c| %>
+<tr valign="top">
+<td>
+<%= link_to c.images[0].img_tag_thumbnail, {:action => 'show', :id => c.id} -%>
+</td>
+<td>
+   <div id="entry">
+      <%= link_to c.title, {:action => 'show', :id => c.id} -%>
+   </div>
+</td>
+<td>
+   <div id="entry">
+      <b> <%= link_to 'Edit', {:action => 'edit', :id => c.id} %></b>
+   </div>
+</td>
+<td>
+   <div id="entry">
+      <b> <%= link_to "Delete", {:action => 'delete', :id => c.id},
+               :confirm => "Are you sure you want to delete this item?" %></b>
+   </div>
+</td>
+</tr>
+<% end %>
+</ul>
+<% end %>
+</td></tr>

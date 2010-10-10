@@ -1,0 +1,18 @@
+<div id="stdtext">
+<h3><%= @item.title %></h3>
+
+<% Item.find(params[:id]).images.each do |i|  %> 
+<li><%= link_to i.img_tag, :action => "show_image", :id => i.id  %></li>
+<% end -%>
+
+
+<p>Price: <%= number_to_currency(@item.price) %></p>
+<p>Shipping: <%= number_to_currency(@item.shipping) %></p>
+<p>Quantity: <%= @item.quantity %><br /></p>
+Category: <%= link_to @item.category.name,
+:action => "show_categories", :id => @item.category.id %><br />
+Created Date:</strong> <%= @item.created_at %><br />
+</p>
+<p><%= @item.description %></p>
+</div>
+<hr />

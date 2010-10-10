@@ -1,0 +1,49 @@
+<div id="stdtext">
+<br></br>
+<table cellpadding="2" cellspacing="0" >
+<% if @store_category.items.blank? %>
+   <p>There is not any <%= @store_category.name -%> currently in the system.</p>
+ <% else %>
+   <h3><%= @store_category.name -%></h3>
+
+
+   <!-- store/show_categories.rhtml -->
+   <br>
+   <% form_tag('/store/filter_categories', :method => "get") do %>
+       <p>
+       <%= text_field 'description', @category_index %>
+       <%= submit_tag "Search Descriptions", :name => nil, :id => 'description' %>
+       </p>
+    <% end %>
+    </div>
+
+   <table cellpadding="2" cellspacing="0">
+
+   <% if @items.blank? %>
+   <p>There are not any items currently in the system matching your search criteria.</p>
+   <% else %>
+      <% @items.each do |c| %>
+         <tr valign="top"><td>
+         <div id="entry"> 
+            <%= link_to c.images[0].img_tag_thumbnail, {:action => 'show', :id => c.id} -%>
+         </div> </td><td><div id="entry"> 
+         <%= link_to c.title, {:action => 'show', :id => c.id} -%>
+         <br>
+         <%= c.description -%>
+         </br>
+         <div class="price-line">
+         <span class="price"><%= number_to_currency(c.price) %></span>
+         Shipping:  
+         <span class="price"><%= number_to_currency(c.shipping) %></span>
+
+         <% form_remote_tag :url => { :controller => "store", :action => :add_to_cart, :id => c } do %>
+            <%= submit_tag "Add to Cart" %>
+         <% end %>
+	
+	 </div></td> </tr>
+      
+      <% end %>
+   <% end %>
+<% end %>
+
+
