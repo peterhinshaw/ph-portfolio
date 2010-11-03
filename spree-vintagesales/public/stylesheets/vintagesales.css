@@ -1,0 +1,37 @@
+body {
+  background: #e8e8e8;
+  color: #642f2f; }
+#:sq {
+  color: red;
+  .ii gt {color: red; } }
+.product-listing {
+  list-style-type: none;
+  margin: 1em 0px 0px 0px;
+  padding: 0px; }
+  .product-listing li {
+    list-style-type: none;
+    width: 100%;
+	background: url(/images/content_bg.gif) repeat-y 90% 0%;
+    margin: 2px; }
+    .product-listing li .product-item {
+      margin-left: 15%;
+	  width: 85%;
+	  padding-left: 1px; }
+      .product-listing li .product-item p {
+        margin: 0px 0px 0px 0px; }
+    .product-listing li .imgg {
+      float: left;
+      padding: 5px 80px 160px 5px;
+	  width: 15%;
+      align: top; }
+    .product-listing li a {
+      display: block;
+      text-decoration: none;
+      color: #642f2f; }
+    .product-listing li a.info {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+	  width: 150px;
+	  padding-right: 10px;
+      padding-left: 10px; }

@@ -1,0 +1,2 @@
+
+VintagesalesExtension.activate
