@@ -1,0 +1,14 @@
+<script type='text/javascript'>
+new SwapSelect('extension[selected_ids][]', 
+    new Array(
+    new Array( '1', 'jpeg', false ),
+    new Array( '2', 'JPEG', false ),
+    new Array( '3', 'jpg', false ),
+    new Array( '4', 'JPG', false ),
+    new Array( '5', 'gif', false ),
+    new Array( '6', 'GIF', false ),
+    new Array( '7', 'png', false ),
+    new Array( '8', 'PNG', false )), 8 );</script>
+
+
+

@@ -1,0 +1,13 @@
+<h1>File/Directory Listing</h1> 
+
+
+<%= form_tag :action => 'fileseek', :id => @some_object %>
+Starting point for search
+<%= text_field :findfile, :@searchPoint, "size" => 20 %>
+<br> 
+File extensions to search for
+<%= swapselect :extension, @extension, :selected, Extension.find(:all).map{ |extension| [extension.name, extension.id] } %>
+
+<%= submit_tag( "Search files" ) %>
+
+</form> 

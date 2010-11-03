@@ -1,0 +1,12 @@
+<h1>File/Directory Listing</h1> 
+<% collection_select(:extension, :author_id, @extensions, :id, :name, :prompt => true, :multiple=>true) %>
+<table> 
+<tr> <th>Select Extension(s)</th> </tr> 
+<% @extensions.each do |fe| %> 
+<tr> 
+<td><%= fe.name %></td> 
+</tr> 
+<% end %> 
+</table> 
+<br /> 
+

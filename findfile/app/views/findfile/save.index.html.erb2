@@ -1,0 +1,5 @@
+<h1>File/Directory Listing</h1> 
+<%= collection_select(:extension, :id, @extensions, :id, :name, {:prompt => true, :multiple=>true}) %>
+
+<p><label for="file_extension">Extension</label>:
+<%= collection_select(:extension,:id,@extensions,:id,:name) %></p>
